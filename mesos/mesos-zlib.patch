@@ -1,0 +1,11 @@
+--- configure.ac.orig	2020-11-17 07:52:12.000000000 -0600
++++ configure.ac	2023-07-30 03:32:41.000000000 -0500
+@@ -2290,7 +2290,7 @@
+ fi
+ 
+ AC_CHECK_HEADERS([zlib.h],
+-                 [AC_CHECK_LIB([z], [deflate, gzread, gzwrite, inflate], [],
++                 [AC_CHECK_LIB([z], [gzread], [],
+                                [AC_MSG_ERROR([cannot find libz
+ -------------------------------------------------------------------
+ libz is required for Mesos to build.
