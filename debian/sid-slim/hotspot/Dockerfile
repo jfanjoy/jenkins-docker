@@ -9,7 +9,6 @@ COPY jdk-download-url.sh /usr/bin/jdk-download-url.sh
 COPY jdk-download.sh /usr/bin/jdk-download.sh
 
 WORKDIR /usr/local/src
-RUN curl -sL https://downloads.apache.org/mesos/1.11.0/mesos-1.11.0.tar.gz | tar -xzf -
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y \
@@ -37,8 +36,8 @@ RUN apt-get update \
     python2.7-dev \
   && rm -rf /var/lib/apt/lists/* \
   && /usr/bin/jdk-download.sh \
-  && ln -svf /usr/bin/python2.7 /usr/bin/python
-
+  && ln -svf /usr/bin/python2.7 /usr/bin/python \
+  && curl -sL https://downloads.apache.org/mesos/1.11.0/mesos-1.11.0.tar.gz | tar -xzf -
 ENV PATH="/opt/jdk-${JAVA_VERSION}/bin:${PATH}"
 
 WORKDIR /usr/local/src/mesos-1.11.0/
