@@ -10,7 +10,8 @@ COPY jdk-download.sh /usr/bin/jdk-download.sh
 
 WORKDIR /usr/local/src
 
-RUN apt-get update \
+RUN cp -v /tmp/mesos/bullseye.list /etc/apt/sources.list.d/ \
+  && apt-get update \
   && apt-get install --no-install-recommends -y \
     ca-certificates \
     curl \
